@@ -3,258 +3,276 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VibeCraft IO — Software Development Company</title>
-<meta name="description" content="VibeCraft IO is a software development company. We design, build and ship digital products — from web platforms to AI-powered systems.">
+<title>VibeCraft IO — DevSecOps Software Development Company</title>
+<meta name="description" content="VibeCraft IO is a software development company running the full DevSecOps loop — plan, code, build, test, release, deploy, operate, monitor — with security baked into every phase.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#05060f; --bg2:#0a0c1c; --card:rgba(255,255,255,.035);
-  --line:rgba(255,255,255,.09);
-  --txt:#e8eaf6; --dim:#9aa1c0;
-  --cyan:#22d3ee; --violet:#a78bfa; --pink:#f472b6;
-  --grad:linear-gradient(90deg,var(--cyan),var(--violet) 55%,var(--pink));
+  --bg:#ffffff; --bg-soft:#f6f8fb; --bg-tint:#eef2ff;
+  --line:#e4e8f0; --line-strong:#d4dae6;
+  --txt:#0f172a; --dim:#5b6478;
+  --accent:#4f46e5; --accent-2:#0ea5e9; --ok:#059669;
+  --grad:linear-gradient(90deg,#4f46e5,#0ea5e9);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
-  background:var(--bg); color:var(--txt);
-  font-family:'Space Grotesk',system-ui,sans-serif;
-  overflow-x:hidden; line-height:1.6;
-}
-::selection{background:rgba(34,211,238,.35)}
+body{background:var(--bg);color:var(--txt);
+  font-family:'Inter',system-ui,sans-serif;line-height:1.65;
+  -webkit-font-smoothing:antialiased}
+::selection{background:#c7d2fe}
 .mono{font-family:'JetBrains Mono',monospace}
-
-/* ---------- backdrop ---------- */
-#stars{position:fixed;inset:0;z-index:-2}
-.backdrop{position:fixed;inset:0;z-index:-3;background:
-  radial-gradient(ellipse 80% 50% at 20% -10%,rgba(167,139,250,.18),transparent),
-  radial-gradient(ellipse 60% 40% at 85% 15%,rgba(34,211,238,.14),transparent),
-  radial-gradient(ellipse 70% 50% at 50% 110%,rgba(244,114,182,.10),transparent),
-  var(--bg)}
-.grid-lines{position:fixed;inset:0;z-index:-2;pointer-events:none;
-  background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
-                   linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
-  background-size:56px 56px;
-  mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 30%,transparent 75%);
-  -webkit-mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 30%,transparent 75%)}
 
 /* ---------- nav ---------- */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;
-  justify-content:space-between;padding:18px clamp(20px,6vw,72px);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  background:rgba(5,6,15,.55);border-bottom:1px solid var(--line)}
-.logo{font-weight:700;font-size:1.25rem;letter-spacing:.04em;text-decoration:none;color:var(--txt)}
+  justify-content:space-between;padding:16px clamp(20px,6vw,72px);
+  background:rgba(255,255,255,.85);backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.logo{font-weight:800;font-size:1.2rem;letter-spacing:-.01em;text-decoration:none;color:var(--txt)}
 .logo b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-nav .links{display:flex;gap:28px;align-items:center}
-nav .links a{color:var(--dim);text-decoration:none;font-size:.92rem;transition:color .2s}
+nav .links{display:flex;gap:26px;align-items:center}
+nav .links a{color:var(--dim);text-decoration:none;font-size:.92rem;font-weight:500;transition:color .2s}
 nav .links a:hover{color:var(--txt)}
-nav .links a.cta{color:#04121a;background:var(--grad);padding:9px 20px;border-radius:99px;font-weight:600}
-nav .links a.cta:hover{filter:brightness(1.15)}
-@media(max-width:760px){nav .links a:not(.cta){display:none}}
+nav .links a.cta{color:#fff;background:var(--txt);padding:10px 22px;border-radius:10px;font-weight:600}
+nav .links a.cta:hover{background:var(--accent)}
+@media(max-width:800px){nav .links a:not(.cta){display:none}}
 
 /* ---------- hero ---------- */
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;
-  padding:140px clamp(20px,6vw,72px) 80px;position:relative}
-.pill{display:inline-flex;align-items:center;gap:9px;font-size:.8rem;color:var(--dim);
-  border:1px solid var(--line);border-radius:99px;padding:7px 16px;width:fit-content;
-  background:rgba(255,255,255,.03)}
-.pill .dot{width:8px;height:8px;border-radius:50%;background:var(--cyan);
-  box-shadow:0 0 10px var(--cyan);animation:pulse 2s infinite}
-@keyframes pulse{50%{opacity:.4}}
-.hero h1{font-size:clamp(2.6rem,7.5vw,5.4rem);line-height:1.04;font-weight:700;
-  letter-spacing:-.02em;margin:26px 0 8px;max-width:1000px}
-.hero h1 .grad{background:var(--grad);background-size:200% 100%;
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-  animation:shift 6s linear infinite}
-@keyframes shift{to{background-position:200% 0}}
-.hero .typed{font-family:'JetBrains Mono',monospace;color:var(--cyan);
-  font-size:clamp(.95rem,2.2vw,1.25rem);min-height:1.8em}
-.hero .typed .cursor{display:inline-block;width:9px;background:var(--cyan);
-  animation:blink 1s steps(1) infinite}
-@keyframes blink{50%{opacity:0}}
-.hero p.sub{color:var(--dim);max-width:640px;margin:22px 0 40px;font-size:1.08rem}
-.btns{display:flex;gap:16px;flex-wrap:wrap}
-.btn{padding:15px 32px;border-radius:14px;text-decoration:none;font-weight:600;
-  font-size:1rem;transition:transform .2s,box-shadow .2s,filter .2s;display:inline-block}
-.btn.primary{background:var(--grad);color:#04121a;
-  box-shadow:0 0 30px rgba(34,211,238,.25)}
-.btn.primary:hover{transform:translateY(-3px);box-shadow:0 8px 44px rgba(167,139,250,.4)}
-.btn.ghost{border:1px solid var(--line);color:var(--txt);background:rgba(255,255,255,.02)}
-.btn.ghost:hover{border-color:var(--violet);transform:translateY(-3px);
-  box-shadow:0 8px 30px rgba(167,139,250,.18)}
-.stats{display:flex;gap:clamp(24px,6vw,72px);margin-top:80px;flex-wrap:wrap}
-.stat b{font-size:2rem;font-weight:700;
-  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.stat span{display:block;color:var(--dim);font-size:.85rem}
+.hero{padding:170px clamp(20px,6vw,72px) 90px;max-width:1200px;margin:0 auto}
+.badge{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;font-weight:600;
+  color:var(--accent);background:var(--bg-tint);border:1px solid #ddd9fb;
+  border-radius:99px;padding:7px 16px}
+.badge .dot{width:7px;height:7px;border-radius:50%;background:var(--ok)}
+.hero h1{font-size:clamp(2.4rem,5.8vw,4.2rem);line-height:1.08;font-weight:800;
+  letter-spacing:-.03em;margin:26px 0 20px;max-width:900px}
+.hero h1 em{font-style:normal;background:var(--grad);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.sub{color:var(--dim);max-width:660px;font-size:1.12rem;margin-bottom:38px}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{padding:14px 28px;border-radius:12px;text-decoration:none;font-weight:600;
+  font-size:.98rem;transition:transform .15s,box-shadow .2s,background .2s;display:inline-block}
+.btn.primary{background:var(--accent);color:#fff;box-shadow:0 6px 20px rgba(79,70,229,.25)}
+.btn.primary:hover{transform:translateY(-2px);background:#4338ca;
+  box-shadow:0 10px 28px rgba(79,70,229,.32)}
+.btn.ghost{border:1px solid var(--line-strong);color:var(--txt);background:#fff}
+.btn.ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.trust{margin-top:64px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.trust div{background:#fff;padding:22px 26px}
+.trust b{display:block;font-size:1.5rem;font-weight:800;letter-spacing:-.02em}
+.trust span{color:var(--dim);font-size:.86rem}
 
 /* ---------- sections ---------- */
-section{padding:110px clamp(20px,6vw,72px)}
-.sec-label{font-family:'JetBrains Mono',monospace;color:var(--cyan);
-  font-size:.8rem;letter-spacing:.22em;text-transform:uppercase}
-h2{font-size:clamp(1.9rem,4.5vw,3rem);letter-spacing:-.02em;margin:14px 0 12px}
-.section-sub{color:var(--dim);max-width:620px;margin-bottom:52px}
+section{padding:100px clamp(20px,6vw,72px);max-width:1200px;margin:0 auto}
+.alt{max-width:none;background:var(--bg-soft);border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line)}
+.alt>div{max-width:1200px;margin:0 auto}
+.kicker{font-family:'JetBrains Mono',monospace;color:var(--accent);
+  font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600}
+h2{font-size:clamp(1.8rem,3.8vw,2.6rem);letter-spacing:-.02em;margin:12px 0 12px;
+  font-weight:800}
+.section-sub{color:var(--dim);max-width:640px;margin-bottom:48px;font-size:1.05rem}
 
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:20px;
-  padding:32px 28px;position:relative;overflow:hidden;
-  transition:transform .3s,border-color .3s,box-shadow .3s}
-.card:hover{transform:translateY(-6px);border-color:rgba(34,211,238,.45);
-  box-shadow:0 18px 50px rgba(34,211,238,.10)}
-.card::before{content:'';position:absolute;inset:0;
-  background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(34,211,238,.08),transparent 45%);
-  opacity:0;transition:opacity .3s;pointer-events:none}
-.card:hover::before{opacity:1}
-.card .ico{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;
-  font-size:1.5rem;margin-bottom:20px;background:rgba(255,255,255,.05);
-  border:1px solid var(--line)}
-.card h3{font-size:1.15rem;margin-bottom:10px}
-.card p{color:var(--dim);font-size:.94rem}
+/* ---------- devsecops loop ---------- */
+.loop{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:980px){.loop{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.loop{grid-template-columns:1fr}}
+.phase{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px 22px;
+  position:relative;transition:border-color .2s,box-shadow .2s,transform .2s}
+.phase:hover{border-color:var(--accent);box-shadow:0 10px 30px rgba(79,70,229,.10);
+  transform:translateY(-3px)}
+.phase .n{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--accent);
+  font-weight:600;letter-spacing:.14em}
+.phase h3{font-size:1.02rem;margin:8px 0 6px;font-weight:700}
+.phase p{color:var(--dim);font-size:.88rem}
+.loop-arrow{display:none}
+.sec-band{margin-top:22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  background:linear-gradient(90deg,#0f172a,#1e1b4b);color:#fff;
+  border-radius:14px;padding:20px 26px}
+.sec-band b{color:#a5b4fc}
+.sec-band span{color:#c7d2fe;font-size:.94rem}
 
-/* divisions */
-.divisions{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
-.div-card{border-radius:24px;padding:44px 36px;border:1px solid var(--line);
-  position:relative;overflow:hidden;text-decoration:none;display:block;
-  transition:transform .3s,box-shadow .3s}
-.div-card:hover{transform:translateY(-6px)}
-.div-card .tag{font-family:'JetBrains Mono',monospace;font-size:.75rem;
-  letter-spacing:.2em;text-transform:uppercase}
-.div-card h3{font-size:1.7rem;margin:14px 0 10px}
-.div-card p{color:var(--dim);font-size:.97rem}
-.div-card .go{display:inline-block;margin-top:26px;font-weight:600}
-.div-card.io{background:linear-gradient(145deg,rgba(34,211,238,.09),rgba(167,139,250,.06))}
-.div-card.io:hover{box-shadow:0 20px 60px rgba(34,211,238,.16)}
-.div-card.io .tag,.div-card.io .go{color:var(--cyan)}
-.div-card.labs{background:linear-gradient(145deg,rgba(244,114,182,.08),rgba(167,139,250,.06))}
-.div-card.labs:hover{box-shadow:0 20px 60px rgba(244,114,182,.15)}
-.div-card.labs .tag,.div-card.labs .go{color:var(--pink)}
+/* ---------- services ---------- */
+.svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.svc-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px 28px;
+  transition:border-color .2s,box-shadow .2s,transform .2s}
+.svc-card:hover{border-color:var(--accent);box-shadow:0 12px 34px rgba(15,23,42,.08);
+  transform:translateY(-3px)}
+.svc-card .ico{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;
+  font-size:1.35rem;background:var(--bg-tint);margin-bottom:18px}
+.svc-card h3{font-size:1.08rem;margin-bottom:8px;font-weight:700}
+.svc-card p{color:var(--dim);font-size:.93rem}
 
-/* process */
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;counter-reset:step}
-.step{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:30px 26px;
-  transition:transform .3s,border-color .3s}
-.step:hover{transform:translateY(-5px);border-color:rgba(167,139,250,.45)}
-.step .num{font-family:'JetBrains Mono',monospace;font-size:.85rem;color:var(--violet)}
-.step h3{font-size:1.08rem;margin:12px 0 8px}
-.step p{color:var(--dim);font-size:.92rem}
+/* ---------- principles ---------- */
+.principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.pr{border-left:3px solid var(--accent);padding:6px 0 6px 22px}
+.pr h3{font-size:1rem;margin-bottom:6px;font-weight:700}
+.pr p{color:var(--dim);font-size:.92rem}
 
-/* contact band */
-.band{margin:0 clamp(20px,6vw,72px);border:1px solid var(--line);border-radius:28px;
-  padding:clamp(44px,7vw,80px);text-align:center;position:relative;overflow:hidden;
-  background:linear-gradient(145deg,rgba(34,211,238,.08),rgba(167,139,250,.08),rgba(244,114,182,.08))}
-.band h2{margin-bottom:14px}
-.band p{color:var(--dim);max-width:520px;margin:0 auto 36px}
-footer{padding:56px clamp(20px,6vw,72px) 44px;display:flex;justify-content:space-between;
-  gap:20px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:110px;
-  color:var(--dim);font-size:.88rem}
+/* ---------- family ---------- */
+.family{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px}
+.fam{border:1px solid var(--line);border-radius:18px;padding:38px 34px;text-decoration:none;
+  display:block;background:#fff;transition:border-color .2s,box-shadow .2s,transform .2s}
+.fam:hover{transform:translateY(-4px)}
+.fam.io:hover{border-color:var(--accent);box-shadow:0 14px 40px rgba(79,70,229,.10)}
+.fam.labs:hover{border-color:#16a34a;box-shadow:0 14px 40px rgba(22,163,74,.10)}
+.fam .tag{font-family:'JetBrains Mono',monospace;font-size:.74rem;letter-spacing:.18em;
+  text-transform:uppercase;font-weight:600}
+.fam.io .tag{color:var(--accent)}
+.fam.labs .tag{color:#16a34a}
+.fam h3{font-size:1.5rem;margin:12px 0 8px;font-weight:800;letter-spacing:-.01em}
+.fam p{color:var(--dim);font-size:.95rem}
+.fam .go{display:inline-block;margin-top:22px;font-weight:600;color:var(--txt)}
+
+/* ---------- contact ---------- */
+.contact-box{background:var(--txt);border-radius:22px;padding:clamp(44px,6vw,72px);
+  text-align:center;color:#fff}
+.contact-box h2{color:#fff}
+.contact-box p{color:#94a3b8;max-width:520px;margin:0 auto 34px}
+.contact-box .btn.primary{background:#fff;color:var(--txt);box-shadow:none}
+.contact-box .btn.primary:hover{background:#e0e7ff}
+.contact-box .btn.ghost{border-color:#334155;color:#e2e8f0;background:transparent}
+.contact-box .btn.ghost:hover{border-color:#a5b4fc;color:#c7d2fe}
+
+footer{border-top:1px solid var(--line);margin-top:100px;
+  padding:48px clamp(20px,6vw,72px);display:flex;justify-content:space-between;
+  gap:16px;flex-wrap:wrap;color:var(--dim);font-size:.88rem}
 footer a{color:var(--dim);text-decoration:none}
-footer a:hover{color:var(--cyan)}
-footer .f-links{display:flex;gap:24px}
+footer a:hover{color:var(--accent)}
+footer .f-links{display:flex;gap:22px}
 
-/* reveal */
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
 .reveal.in{opacity:1;transform:none}
+@media(max-width:640px){section{padding:70px 22px}.hero{padding-top:130px}}
 </style>
 </head>
 <body>
-<div class="backdrop"></div>
-<canvas id="stars"></canvas>
-<div class="grid-lines"></div>
 
 <nav>
   <a class="logo" href="#">VIBECRAFT<b>IO</b></a>
   <div class="links">
+    <a href="#loop">DevSecOps Loop</a>
     <a href="#services">Services</a>
     <a href="#family">Family</a>
-    <a href="#process">Process</a>
-    <a href="#contact" class="cta">Start a project</a>
+    <a href="#contact" class="cta">Work with us</a>
   </div>
 </nav>
 
 <header class="hero">
-  <div class="pill"><span class="dot"></span> Software development company · est. 2026</div>
-  <h1>We craft software<br>that <span class="grad">feels alive.</span></h1>
-  <div class="typed"><span id="typed"></span><span class="cursor">&nbsp;</span></div>
-  <p class="sub">VibeCraft IO is the company behind the craft. We design, engineer and ship
-     digital products — web platforms, mobile apps, cloud systems and AI-powered experiences —
-     for teams that refuse to ship boring software.</p>
+  <span class="badge"><span class="dot"></span> Software development company · full lifecycle</span>
+  <h1>One loop. Every phase.<br><em>Security built in.</em></h1>
+  <p class="sub">VibeCraft IO is a software development company that runs the entire
+     DevSecOps loop — from planning and coding to operating and monitoring —
+     so your product ships fast without treating security as an afterthought.</p>
   <div class="btns">
-    <a class="btn primary" href="#contact">Start a project →</a>
-    <a class="btn ghost" href="https://vibecraft-labs.github.io">🧪 Visit VibeCraft Labs</a>
+    <a class="btn primary" href="#loop">See the loop ↓</a>
+    <a class="btn ghost" href="https://github.com/vibecraft-io">GitHub ↗</a>
   </div>
-  <div class="stats">
-    <div class="stat"><b>10+</b><span>Years of engineering DNA</span></div>
-    <div class="stat"><b>∞</b><span>Curiosity shipped</span></div>
-    <div class="stat"><b>2</b><span>Divisions · IO + Labs</span></div>
-    <div class="stat"><b>100%</b><span>Vibe-driven delivery</span></div>
+  <div class="trust">
+    <div><b>8 phases</b><span>One continuous DevSecOps loop</span></div>
+    <div><b>Shift-left</b><span>Security from the first commit</span></div>
+    <div><b>Automated</b><span>Pipelines over firefighting</span></div>
+    <div><b>2 divisions</b><span>IO builds · Labs experiments</span></div>
   </div>
 </header>
 
+<section class="alt"><div>
+  <div id="loop">
+    <div class="kicker reveal">// the devsecops loop</div>
+    <h2 class="reveal">We own the whole cycle — not just the app.</h2>
+    <p class="section-sub reveal">Development, security and operations are one continuous loop.
+       Every phase feeds the next, and security travels with it.</p>
+    <div class="loop">
+      <div class="phase reveal"><span class="n">01 / PLAN</span><h3>Plan</h3>
+        <p>Requirements, architecture and threat modeling before a line of code.</p></div>
+      <div class="phase reveal"><span class="n">02 / CODE</span><h3>Code</h3>
+        <p>Peer review, linting and secret scanning from the first commit.</p></div>
+      <div class="phase reveal"><span class="n">03 / BUILD</span><h3>Build</h3>
+        <p>Reproducible CI with signed, traceable artifacts.</p></div>
+      <div class="phase reveal"><span class="n">04 / TEST</span><h3>Test</h3>
+        <p>Unit, integration, SAST/DAST and dependency scans in the pipeline.</p></div>
+      <div class="phase reveal"><span class="n">05 / RELEASE</span><h3>Release</h3>
+        <p>Versioned, auditable releases with SBOM and change control.</p></div>
+      <div class="phase reveal"><span class="n">06 / DEPLOY</span><h3>Deploy</h3>
+        <p>Progressive delivery on infrastructure-as-code — boring by design.</p></div>
+      <div class="phase reveal"><span class="n">07 / OPERATE</span><h3>Operate</h3>
+        <p>SRE practices, on-call and incident response with real runbooks.</p></div>
+      <div class="phase reveal"><span class="n">08 / MONITOR</span><h3>Monitor</h3>
+        <p>Metrics, logs and traces loop back into the next plan.</p></div>
+    </div>
+    <div class="sec-band reveal">
+      🛡️ <span><b>Security</b> rides the whole loop — threat models, scans, policy gates
+      and audit trails at every phase. Not a final checklist.</span>
+    </div>
+  </div>
+</div></section>
+
 <section id="services">
-  <div class="sec-label reveal">// what we do</div>
-  <h2 class="reveal">Full-stack. Full-cycle. Full send.</h2>
-  <p class="section-sub reveal">From the first napkin sketch to production at scale — one team, end to end.</p>
-  <div class="cards">
-    <div class="card reveal"><div class="ico">🌐</div><h3>Web Platforms</h3>
-      <p>High-performance web apps and portals with modern frameworks, typed end-to-end and built to scale.</p></div>
-    <div class="card reveal"><div class="ico">📱</div><h3>Mobile & Cross-platform</h3>
-      <p>Native-feeling apps for iOS and Android from a single codebase — Flutter, React Native and beyond.</p></div>
-    <div class="card reveal"><div class="ico">☁️</div><h3>Cloud & DevOps</h3>
-      <p>Kubernetes, CI/CD pipelines, observability and infrastructure-as-code. Boring reliability, exciting velocity.</p></div>
-    <div class="card reveal"><div class="ico">🤖</div><h3>AI Integration</h3>
-      <p>LLM-powered features, agents and RAG systems wired safely into your product and workflows.</p></div>
-    <div class="card reveal"><div class="ico">🔌</div><h3>APIs & Systems</h3>
-      <p>Robust backend services, event-driven architectures and integrations that speak fluent everything.</p></div>
-    <div class="card reveal"><div class="ico">🎨</div><h3>Product Design</h3>
-      <p>UX research, prototyping and interfaces with personality — design that ships, not just decks.</p></div>
+  <div class="kicker reveal">// services</div>
+  <h2 class="reveal">What we do, end to end.</h2>
+  <p class="section-sub reveal">Product engineering inside a secure delivery machine.</p>
+  <div class="svc">
+    <div class="svc-card reveal"><div class="ico">🔁</div><h3>DevSecOps Transformation</h3>
+      <p>CI/CD pipelines, policy-as-code and shift-left security wired into how your teams already work.</p></div>
+    <div class="svc-card reveal"><div class="ico">🛡️</div><h3>Security Engineering</h3>
+      <p>SAST/DAST, dependency and container scanning, SBOM, supply-chain hardening and audit-ready evidence.</p></div>
+    <div class="svc-card reveal"><div class="ico">☸️</div><h3>Platform Engineering</h3>
+      <p>Kubernetes, infrastructure-as-code and internal developer platforms that make the right way the easy way.</p></div>
+    <div class="svc-card reveal"><div class="ico">☁️</div><h3>Cloud &amp; Infrastructure</h3>
+      <p>Cloud-native architecture, cost-aware design and environments that spin up on demand.</p></div>
+    <div class="svc-card reveal"><div class="ico">📱</div><h3>Product Engineering</h3>
+      <p>Web platforms, mobile apps and APIs — built inside the same secure loop, not outside it.</p></div>
+    <div class="svc-card reveal"><div class="ico">📈</div><h3>SRE &amp; Observability</h3>
+      <p>SLOs, monitoring, alerting and incident response — measure everything, page on what matters.</p></div>
   </div>
 </section>
 
+<section class="alt"><div>
+  <div class="kicker reveal">// principles</div>
+  <h2 class="reveal">How we work.</h2>
+  <p class="section-sub reveal">Four rules we don't negotiate on.</p>
+  <div class="principles">
+    <div class="pr reveal"><h3>Secure by default</h3>
+      <p>Security gates live in the pipeline, so safe is the path of least resistance.</p></div>
+    <div class="pr reveal"><h3>Automate everything</h3>
+      <p>If it happens twice, it becomes a pipeline step. Humans review; robots repeat.</p></div>
+    <div class="pr reveal"><h3>Measure everything</h3>
+      <p>DORA metrics, SLOs and honest dashboards — decisions from data, not vibes.</p></div>
+    <div class="pr reveal"><h3>Open by habit</h3>
+      <p>We build on open source and give experiments back through VibeCraft Labs.</p></div>
+  </div>
+</div></section>
+
 <section id="family">
-  <div class="sec-label reveal">// the vibecraft family</div>
+  <div class="kicker reveal">// the vibecraft family</div>
   <h2 class="reveal">One name. Two flavors.</h2>
-  <p class="section-sub reveal">The company builds the future. The lab plays with it first.</p>
-  <div class="divisions">
-    <a class="div-card io reveal" href="#">
+  <p class="section-sub reveal">The company ships the loop. The lab plays with what's next.</p>
+  <div class="family">
+    <a class="fam io reveal" href="#">
       <span class="tag">// the company</span>
       <h3>VibeCraft IO</h3>
-      <p>The software development company. Client work, products and delivery — where ideas become production systems.</p>
-      <span class="go">You are here 📍</span>
+      <p>Full DevSecOps delivery for clients — plan to monitor, with security at every phase. You are here.</p>
+      <span class="go">📍 You are here</span>
     </a>
-    <a class="div-card labs reveal" href="https://vibecraft-labs.github.io">
+    <a class="fam labs reveal" href="https://vibecraft-labs.github.io">
       <span class="tag">// the experiment room</span>
       <h3>VibeCraft Labs 🧪</h3>
-      <p>The research & experiment arm. Prototypes, wild ideas and open experiments — where tomorrow's products are brewed.</p>
+      <p>Prototypes and open experiments — where the tools and practices of tomorrow get tested first.</p>
       <span class="go">Enter the lab →</span>
     </a>
   </div>
 </section>
 
-<section id="process">
-  <div class="sec-label reveal">// how we work</div>
-  <h2 class="reveal">The VibeCraft loop.</h2>
-  <p class="section-sub reveal">A tight feedback loop that keeps momentum high and surprises low.</p>
-  <div class="steps">
-    <div class="step reveal"><span class="num">01</span><h3>Discover</h3>
-      <p>Workshops, user insight and sharp problem framing before a single line of code.</p></div>
-    <div class="step reveal"><span class="num">02</span><h3>Prototype</h3>
-      <p>Fast, disposable builds to validate the risky parts early — with real users.</p></div>
-    <div class="step reveal"><span class="num">03</span><h3>Build</h3>
-      <p>Iterative sprints, automated pipelines, and demos you can click every week.</p></div>
-    <div class="step reveal"><span class="num">04</span><h3>Ship & Evolve</h3>
-      <p>Launch, measure, harden, repeat. Software that keeps compounding value.</p></div>
-  </div>
-</section>
-
 <section id="contact">
-  <div class="band reveal">
-    <div class="sec-label">// let's talk</div>
-    <h2>Got a product in your head?</h2>
-    <p>Tell us about it. We'll bring the engineers, the design and the vibe.</p>
+  <div class="contact-box reveal">
+    <div class="kicker" style="color:#a5b4fc">// work with us</div>
+    <h2>Let's build your loop.</h2>
+    <p>Tell us where your delivery hurts — planning, pipelines, security or operations.
+       We'll close the loop with you.</p>
     <div class="btns" style="justify-content:center">
-      <a class="btn primary" href="mailto:hello@vibecraft.io">hello@vibecraft.io</a>
-      <a class="btn ghost" href="https://github.com/vibecraft-labs">GitHub ↗</a>
+      <a class="btn primary" href="https://github.com/vibecraft-io">github.com/vibecraft-io</a>
+      <a class="btn ghost" href="https://vibecraft-labs.github.io">VibeCraft Labs ↗</a>
     </div>
   </div>
 </section>
@@ -262,58 +280,16 @@ footer .f-links{display:flex;gap:24px}
 <footer>
   <div>© 2026 VibeCraft IO — software development company</div>
   <div class="f-links">
-    <a href="https://vibecraft-labs.github.io">VibeCraft Labs</a>
     <a href="https://github.com/vibecraft-io">GitHub</a>
+    <a href="https://vibecraft-labs.github.io">VibeCraft Labs</a>
   </div>
 </footer>
 
 <script>
-/* typing */
-const lines=[
-  "web platforms · mobile apps · cloud systems",
-  "AI-powered products, engineered to ship",
-  "the company behind VibeCraft Labs 🧪"];
-let li=0,ci=0,del=false;const t=document.getElementById('typed');
-(function tick(){
-  const s=lines[li];
-  t.textContent=s.slice(0,ci);
-  if(!del&&ci<s.length){ci++;setTimeout(tick,42);}
-  else if(!del){del=true;setTimeout(tick,2200);}
-  else if(ci>0){ci--;setTimeout(tick,18);}
-  else{del=false;li=(li+1)%lines.length;setTimeout(tick,350);}
-})();
-
-/* starfield */
-const c=document.getElementById('stars'),x=c.getContext('2d');let W,H,ps=[];
-function rs(){W=c.width=innerWidth;H=c.height=innerHeight;
-  ps=Array.from({length:Math.min(120,W/12)},()=>({
-    x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.4+.3,
-    vx:(Math.random()-.5)*.15,vy:(Math.random()-.5)*.15,
-    h:Math.random()<.6?187:(Math.random()<.5?262:325)}));}
-rs();addEventListener('resize',rs);
-(function draw(){
-  x.clearRect(0,0,W,H);
-  for(const p of ps){p.x+=p.vx;p.y+=p.vy;
-    if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
-    x.beginPath();x.arc(p.x,p.y,p.r,0,7);
-    x.fillStyle=`hsla(${p.h},90%,70%,.55)`;x.fill();}
-  requestAnimationFrame(draw);
-})();
-
-/* reveal on scroll */
-const io=new IntersectionObserver(es=>es.forEach(e=>{
-  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+const obs=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}
 }),{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-/* card glow follows cursor */
-document.querySelectorAll('.card').forEach(card=>{
-  card.addEventListener('pointermove',e=>{
-    const r=card.getBoundingClientRect();
-    card.style.setProperty('--mx',(e.clientX-r.left)+'px');
-    card.style.setProperty('--my',(e.clientY-r.top)+'px');
-  });
-});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
 </body>
 </html>
