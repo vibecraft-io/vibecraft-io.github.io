@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="VibeCraft IO — eight phases, one in motion">
+  <g fill="none" stroke="#000000" stroke-width="11" stroke-linecap="round">
+    <path d="M98.82 87.49 A42 42 0 0 1 87.49 98.82 M72.01 105.23 A42 42 0 0 1 55.99 105.23 M40.51 98.82 A42 42 0 0 1 29.18 87.49 M22.77 72.01 A42 42 0 0 1 22.77 55.99 M29.18 40.51 A42 42 0 0 1 40.51 29.18 M55.99 22.77 A42 42 0 0 1 72.01 22.77 M87.49 29.18 A42 42 0 0 1 98.82 40.51"/>
+  </g>
+  <rect x="98.0" y="56.0" width="16" height="16" rx="3" fill="#000000"/>
+</svg>

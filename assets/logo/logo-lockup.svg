@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 128" role="img" aria-label="VibeCraft IO">
+  <g fill="none" stroke="#000000" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M74 28 H44 Q28 28 28 44 V84 Q28 100 44 100 H84 Q100 100 100 84 V72"/>
+    <path d="M90 72 L100 60 L110 72"/>
+  </g>
+  <!-- print note: convert text to outlines before production -->
+  <text x="148" y="82" font-family="Inter, 'IBM Plex Sans', system-ui, sans-serif" font-size="46" font-weight="600" letter-spacing="-0.5" fill="#000000">VibeCraft <tspan fill="#000000" font-family="'JetBrains Mono', monospace" font-size="40" font-weight="500">IO</tspan></text>
+</svg>

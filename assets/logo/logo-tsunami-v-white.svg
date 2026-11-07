@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="VibeCraft IO">
+  <path fill="none" stroke="#ffffff" stroke-width="12" stroke-linecap="round"
+        d="M64 98 Q50 74 41 50 Q36 38 45 32 Q56 25 61 34 Q65 42 59 48"/>
+  <path fill="none" stroke="#ffffff" stroke-width="12" stroke-linecap="square"
+        d="M64 98 L102 34"/>
+  <path fill="none" stroke="#ffffff" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter"
+        d="M38 66 H104 M104 66 L90 57 M104 66 L90 75"/>
+</svg>

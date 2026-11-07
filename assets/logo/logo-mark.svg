@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none" stroke="#000000" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="VibeCraft IO">
+  <!-- the loop: plan through monitor, then back -->
+  <path d="M74 28 H44 Q28 28 28 44 V84 Q28 100 44 100 H84 Q100 100 100 84 V72"/>
+  <!-- loop-back arrow: monitor feeds the next plan -->
+  <path d="M90 72 L100 60 L110 72"/>
+</svg>
